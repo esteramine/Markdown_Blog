@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('_header') %> 
+
+    <div class="container">
+        <h2 class="mt-4 mb-4">Your Articles</h2>
+
+        <% articles.forEach(article=>{ %>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= article.title %> </h5>
+                    <div class="card-text mb-2">
+                        <%= article.summary %> 
+                    </div>
+                    <button class="btn btn-primary">Read More</button>
+                </div>
+            </div>
+        <% }) %> 
+
+
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "Markdown_Blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esteramine/Markdown_Blog.git"
+  },
+  "keywords": [],
+  "author": "Ann Chou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esteramine/Markdown_Blog/issues"
+  },
+  "homepage": "https://github.com/esteramine/Markdown_Blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dompurify": "^2.2.6",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "jsdom": "^16.4.0",
+    "marked": "^1.2.8",
+    "mongoose": "^5.11.14",
+    "slugify": "^1.4.6"
+  },
+  "devDependencies": {
+    "dotenv-defaults": "^2.0.1",
+    "nodemon": "^2.0.7"
+  }
+}
