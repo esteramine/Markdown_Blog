@@ -40,7 +40,7 @@ router.get('/:username/logout', (req, res)=>{
 });
 
 router.get('/:username/articles', (req, res)=>{
-    console.log(req.params.username);
+    //console.log(req.params.username);
     User.findOne({username: req.params.username}, (err, user)=>{
         if(user.login){
             res.render('user/index', indexPageElements(user.username, 0, user.articles.sort((a, b)=>{return b.createdAt - a.createdAt})));
@@ -52,7 +52,7 @@ router.get('/:username/articles', (req, res)=>{
 });
 
 router.get('/:username/articles/new', (req, res)=>{
-    console.log(req.params.username);
+    //console.log(req.params.username);
     User.findOne({username: req.params.username}, (err, user)=>{
         if(user.login){
             res.render('article/new', articleElements(user.username, 1));
@@ -76,7 +76,7 @@ router.post('/:username/articles/new', (req, res)=>{
     try{
         User.findOneAndUpdate({username: passedUsername}, { $push: { articles: [article] } }, { new: true }, (err, user)=>{ //retrun updated document
             const articles = user.articles;
-            console.log(articles[articles.length-1]._id);
+            //console.log(articles[articles.length-1]._id);
             res.redirect(`/blog/${passedUsername}/articles/${articles[articles.length-1]._id}`); //redirect to the page of the article created (router.get('/:id'))
         });
 
