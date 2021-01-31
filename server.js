@@ -8,6 +8,8 @@ const User = require('./models/user');
 const userBlogRouter = require('./routes/userBlog');
 const saltRounds = 10;
 
+let port = process.env.PORT || 4000;
+
 //mongodb set up
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true, 
@@ -105,7 +107,7 @@ app.post('/loginCheck', (req, res)=>{
 });
 //login routes end
 
-app.listen(4000);
+app.listen(port);
 
 app.use('/blog', userBlogRouter);
 //everything in userBlogRouter (userBlog.js) is based on '/:username', so don't need to specify '/:username' again in userBlog.js, just '/' is enough
