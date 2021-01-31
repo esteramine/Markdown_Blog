@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <h1 class="mt-4 mb-2 text-center">Welcome to Markdown Blog!</h1>
         <h3 class="mt-4 mb-4 text-center">Sign In</h3>
         <form action="/loginCheck" method="POST">
             <small id="error msg" class="form-text text-danger"><%= displayText %> </small>
@@ -19,12 +20,12 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-control" value="<%= user.password %>">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
 
             <small id="signup" class="form-text text-muted">Don't have an account? <a href="/signUp">Sign up</a></small>
 
         </form>
-        
+            
     </div>
     
 </body>

@@ -2,6 +2,7 @@ require('dotenv-defaults').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
 const User = require('./models/user');
 const userBlogRouter = require('./routes/userBlog');
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true, 
     useCreateIndex: true
 } );
+mongoose.set('useFindAndModify', false);
 const db = mongoose.connection;
 db.on('error', (error) => {
     console.error(error)
@@ -27,6 +29,8 @@ app.set('view engine', 'ejs');
 //set up url encoder (body-parser)
 app.use(express.urlencoded({ extended:true }));
 
+//set up method override (for delete)
+app.use(methodOverride('_method'));
 
 
 const signInUpReturnText= (displayText='', userText={username:'', password:''})=>{
@@ -62,7 +66,7 @@ app.post('/signUpCheck', (req, res)=>{
                 else{  //the username does not exist
                     user.save(); //store user data
                     console.log(user.username);
-                    res.redirect(307, `/${user.username}`);
+                    res.redirect(307, `/blog`);
                 }
             });
         });
@@ -88,7 +92,7 @@ app.post('/loginCheck', (req, res)=>{
         else{ //username exists, check password
             bcrypt.compare(user.password, checkUser.hashedPassword, (err, result)=>{
                 if (result){ //password correct
-                    res.redirect(307, `/${user.username}`);
+                    res.redirect(307, `/blog`);
                 }
                 else{ //wrong password
                     console.log("wrong password");
@@ -103,5 +107,5 @@ app.post('/loginCheck', (req, res)=>{
 
 app.listen(4000);
 
-app.use('/:username', userBlogRouter);
+app.use('/blog', userBlogRouter);
 //everything in userBlogRouter (userBlog.js) is based on '/:username', so don't need to specify '/:username' again in userBlog.js, just '/' is enough

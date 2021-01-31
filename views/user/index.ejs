@@ -9,17 +9,25 @@
 <body>
     <%- include('_header') %> 
 
-    <div class="container">
+    <div class="container mb-4">
         <h2 class="mt-4 mb-4">Your Articles</h2>
-
+        <% if(articles.length===0){ %>
+            <div class="text-muted">Create your first article by clicking on the "Create An Article" on the navbar!</div> 
+        <% } %>
         <% articles.forEach(article=>{ %>
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title"><%= article.title %> </h5>
-                    <div class="card-text mb-2">
+                    <p class="text-muted"><%= article.createdAt.toLocaleDateString() %> </p>
+                    <div class="card-text mb-4">
                         <%= article.summary %> 
                     </div>
-                    <button class="btn btn-primary">Read More</button>
+                    <a href="/blog/<%= username %>/articles/<%= article._id %>  " class="btn btn-secondary">Read More</a>
+                    <a href="/blog/<%= username %>/articles/edit/<%= article._id %>" class="btn btn-warning">Edit</a>
+                    <form action="/blog/<%= username %>/articles/<%= article._id %>?_method=DELETE " method="POST" class="d-inline">
+                        <!--use method override to create a delete method when user click on the delete button-->
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         <% }) %> 

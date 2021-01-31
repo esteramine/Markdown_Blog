@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../user/_header') %> 
+    <div class="container">
+       <h1 class="mb-2 mt-4"><%= article.title %> </h1>
+       <div class="text-muted mb-2"><%= article.createdAt.toLocaleDateString() %> </div>
+       <a href="/blog/<%= username %>/articles " class="btn btn-secondary">All Articles</a>
+       <a href="/blog/<%= username %>/articles/edit/<%= article._id %> " class="btn btn-warning">Edit</a>
+
+       <div class="mb-2 text-muted mt-4"><%= article.summary %> </div>
+       <div class="card">
+           <div class="card-body">
+               <div class="card-text">
+                    <div><%- article.sanitizedHtml %> </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</body>
+</html>
