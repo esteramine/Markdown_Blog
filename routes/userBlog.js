@@ -25,13 +25,9 @@ router.post('/', (req, res)=>{ //get the user data
     });
 });
 
-router.get('/home', (req, res)=>{
-    if(login){
-        res.send('hihi');
-    }
-    else{
-        res.redirect('/');
-    }  
+router.get('/:username/home', (req, res)=>{
+    const username = req.params.username;
+    res.redirect(`/blog/${username}/articles`); 
 });
 
 router.get('/:username/logout', (req, res)=>{
