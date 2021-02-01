@@ -2,7 +2,7 @@
 This Project is deployed on Heroku: https://markdownblogapi.herokuapp.com/
 
 ## Overview
-In this markdown blog, you can create your own account, and save or write any articles you want! Most importantly, you can change the font size, add images, insert code or quotes, and so on by leveraging markdown language!
+In this markdown blog, you can create your own account, and save or write any article you want! Most importantly, you can change the font size, add images, insert code or quotes, and so on by leveraging markdown language!
 
 
 Below are the user interfaces of this markdown blog:
